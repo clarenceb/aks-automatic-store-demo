@@ -1,0 +1,54 @@
+apiVersion: kaito.sh/v1alpha1
+kind: Workspace
+metadata:
+  name: workspace-falcon-7b-instruct-cpu-only
+  annotations:
+    kaito.sh/enablelb: "False"
+resource:
+  count: 1
+  instanceType: "Standard_D16s_v3"
+  labelSelector:
+    matchLabels:
+      apps: falcon-7b-instruct
+  preferredNodes:
+    - <your-kaito-cpu-node-name>
+inference:
+  template:
+    metadata:
+        labels:
+          apps: falcon-7b-instruct
+    spec:
+      containers:
+        - name: falcon-container
+          image: mcr.microsoft.com/aks/kaito/kaito-falcon-7b-instruct:0.0.4
+          command:
+            - /bin/sh
+            - -c
+            - accelerate launch --num_processes 1 --num_machines 1 --machine_rank 0 --gpu_ids all inference_api.py --pipeline text-generation --torch_dtype bfloat16     
+          resources:
+            requests:
+              cpu: "8"
+              memory: 16Gi
+            limits:
+              cpu: "16"
+              memory: 64Gi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 600
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          volumeMounts:
+          - name: dshm
+            mountPath: /dev/shm
+      volumes:
+      - name: dshm
+        emptyDir:
+          medium: Memory
+

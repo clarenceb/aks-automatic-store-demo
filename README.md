@@ -29,6 +29,10 @@ description: This sample demo app consists of a group of containerized microserv
 
 # AKS Store Demo
 
+Updated for AKS Automatic ands KAITO, see [Steps](./STEPS.md)
+
+## Original notes
+
 This sample demo app consists of a group of containerized microservices that can be easily deployed into an Azure Kubernetes Service (AKS) cluster. This is meant to show a realistic scenario using a polyglot architecture, event-driven design, and common open source back-end services (eg - RabbitMQ, MongoDB). The application also leverages OpenAI's GPT-3 models to generate product descriptions. This can be done using either [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/overview) or [OpenAI](https://openai.com/).
 
 This application is inspired by another demo app called [Red Dog](https://github.com/Azure/reddog-code).

@@ -14,6 +14,10 @@ terraform {
       source  = "hashicorp/random"
       version = "=3.6.1"
     }
+
+    azapi = {
+      source = "azure/azapi"
+    }
   }
 }
 
@@ -35,6 +39,9 @@ provider "azurerm" {
       permanently_delete_on_destroy = true
     }
   }
+}
+
+provider "azapi" {
 }
 
 resource "random_integer" "example" {

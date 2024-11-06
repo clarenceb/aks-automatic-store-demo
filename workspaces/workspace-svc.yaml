@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: workspace-falcon-7b-instruct-cpu-only
+spec:
+  selector:
+    apps: falcon-7b-instruct
+  ports:
+  - port: 80
+    targetPort: 5000

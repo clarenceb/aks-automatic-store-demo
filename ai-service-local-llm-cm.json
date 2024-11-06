@@ -1,0 +1,10 @@
+[
+  {
+    "op": "replace",
+    "path": "/data",
+    "value": {
+      "USE_LOCAL_LLM": "True",
+      "AI_ENDPOINT": "http://workspace-falcon-7b-instruct-cpu-only/chat"
+    }
+  }
+]

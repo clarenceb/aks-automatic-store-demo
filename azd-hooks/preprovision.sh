@@ -31,6 +31,42 @@ while [[ $(az feature show --namespace "Microsoft.ContainerService" --name "Azur
   sleep 3
 done
 
+az feature register --namespace "Microsoft.ContainerService" --name "EnableAPIServerVnetIntegrationPreview"
+while [[ $(az feature show --namespace "Microsoft.ContainerService" --name "EnableAPIServerVnetIntegrationPreview" --query "properties.state" -o tsv) != "Registered" ]]; do
+  echo "Waiting for EnableAPIServerVnetIntegrationPreview feature registration..."
+  sleep 3
+done
+
+az feature register --namespace "Microsoft.ContainerService" --name "NRGLockdownPreview"
+while [[ $(az feature show --namespace "Microsoft.ContainerService" --name "NRGLockdownPreview" --query "properties.state" -o tsv) != "Registered" ]]; do
+  echo "Waiting for NRGLockdownPreview feature registration..."
+  sleep 3
+done
+
+az feature register --namespace "Microsoft.ContainerService" --name "SafeguardsPreview"
+while [[ $(az feature show --namespace "Microsoft.ContainerService" --name "SafeguardsPreview" --query "properties.state" -o tsv) != "Registered" ]]; do
+  echo "Waiting for SafeguardsPreview feature registration..."
+  sleep 3
+done
+
+az feature register --namespace "Microsoft.ContainerService" --name "NodeAutoProvisioningPreview"
+while [[ $(az feature show --namespace "Microsoft.ContainerService" --name "NodeAutoProvisioningPreview" --query "properties.state" -o tsv) != "Registered" ]]; do
+  echo "Waiting for NodeAutoProvisioningPreview feature registration..."
+  sleep 3
+done
+
+az feature register --namespace "Microsoft.ContainerService" --name "DisableSSHPreview"
+while [[ $(az feature show --namespace "Microsoft.ContainerService" --name "DisableSSHPreview" --query "properties.state" -o tsv) != "Registered" ]]; do
+  echo "Waiting for DisableSSHPreview feature registration..."
+  sleep 3
+done
+
+az feature register --namespace "Microsoft.ContainerService" --name "AutomaticSKUPreview"
+while [[ $(az feature show --namespace "Microsoft.ContainerService" --name "AutomaticSKUPreview" --query "properties.state" -o tsv) != "Registered" ]]; do
+  echo "Waiting for AutomaticSKUPreview feature registration..."
+  sleep 3
+done
+
 # propagate the feature registrations
 az provider register -n Microsoft.ContainerService
 

@@ -1,0 +1,20 @@
+controller:
+  env:
+  - name: ARM_SUBSCRIPTION_ID
+    value: <your_subscription>
+  - name: LOCATION
+    value: <location>
+  - name: AZURE_CLUSTER_NAME
+    value: <aks_cluster>
+  - name: AZURE_NODE_RESOURCE_GROUP
+    value: MC_<rg_name>_<aks_cluster>_<location>
+  - name: ARM_RESOURCE_GROUP
+    value: <rg_name>
+  - name: LEADER_ELECT
+    value: "false"
+workloadIdentity:
+  clientId: <client_id>
+  tenantId: <tenant_id>
+settings:
+  azure:
+    clusterName: <aks_cluster>

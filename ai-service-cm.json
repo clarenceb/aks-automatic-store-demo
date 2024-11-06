@@ -1,0 +1,15 @@
+[
+  {
+    "op": "replace",
+    "path": "/data",
+    "value": {
+      "AZURE_OPENAI_API_VERSION": "2024-02-15-preview",
+      "AZURE_OPENAI_DALLE_DEPLOYMENT_NAME": "dall-e-3",
+      "AZURE_OPENAI_DALLE_ENDPOINT": "https://<your-aoai>.openai.azure.com/",
+      "AZURE_OPENAI_DEPLOYMENT_NAME": "gpt-35-turbo",
+      "AZURE_OPENAI_ENDPOINT": "https://<your-aoai>.openai.azure.com/",
+      "USE_AZURE_AD": "True",
+      "USE_AZURE_OPENAI": "True"
+    }
+  }
+]

@@ -7,7 +7,7 @@ output "AZURE_RESOURCE_GROUP" {
 }
 
 output "AZURE_AKS_CLUSTER_NAME" {
-  value = azurerm_kubernetes_cluster.example.name
+  value = azapi_resource.automatic.name
 }
 
 output "AZURE_AKS_NAMESPACE" {
@@ -15,15 +15,15 @@ output "AZURE_AKS_NAMESPACE" {
 }
 
 output "AZURE_AKS_CLUSTER_ID" {
-  value = azurerm_kubernetes_cluster.example.id
+  value = azapi_resource.automatic.id
 }
 
 output "AZURE_AKS_CLUSTER_NODE_RESOURCEGROUP_NAME" {
-  value = azurerm_kubernetes_cluster.example.node_resource_group
+  value = jsondecode(azapi_resource.automatic.output).properties.nodeResourceGroup
 }
 
 output "AZURE_AKS_OIDC_ISSUER_URL" {
-  value = azurerm_kubernetes_cluster.example.oidc_issuer_url
+  value = jsondecode(azapi_resource.automatic.output).properties.oidcIssuerProfile.issuerURL
 }
 
 output "AZURE_OPENAI_MODEL_NAME" {

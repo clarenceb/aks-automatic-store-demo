@@ -9,6 +9,13 @@ if ! command -v kubelogin &> /dev/null; then
 fi
 
 ##########################################################
+# Convert kubeconfig to use Azure CLI auth token
+# for AAD Auth to work.
+##########################################################
+export KUBECONFIG=$HOME/.kube/config
+kubelogin convert-kubeconfig -l azurecli
+
+##########################################################
 # Create the custom-values.yaml file
 ##########################################################
 cat << EOF > custom-values.yaml

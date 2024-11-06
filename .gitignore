@@ -146,3 +146,4 @@ playwright/.cache/
 
 # custom helm values
 custom-values.yaml
+custom-values.yaml.bak
