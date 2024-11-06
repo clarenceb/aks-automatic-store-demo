@@ -42,7 +42,14 @@ az aks nodepool add \
 
 kubectl create ns pets
 
+# KAITO with CPU nodes only
 kubectl apply -f workspaces/$KAITO_MODEL-cpu-only.yaml -n pets
+kubectl apply -f workspaces/workspace-svc.yaml -n pets
+
+# or direct deployment without a KAITO Workspace
+kubectl apply -f workspaces/workspace-svc -n pets
+kubectl apply -f workspaces/deployment.yaml -n pets
+
 kubectl describe pod -n pets $(kubectl get pod -n pets -l app=$KAITO_MODEL -o jsonpath="{.items[0].metadata.name}")
 
 kubectl run -n pets -it --rm --restart=Never curl --image=curlimages/curl 2>/dev/null -- curl -sX POST http://$KAITO_MODEL-cpu-only/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"What is a kubernetes?\"}"
