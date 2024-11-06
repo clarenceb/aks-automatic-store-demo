@@ -29,7 +29,7 @@ description: This sample demo app consists of a group of containerized microserv
 
 # AKS Store Demo
 
-Updated for AKS Automatic ands KAITO, see [Steps](./STEPS.md)
+Updated for AKS Automatic and KAITO, see [Steps](./STEPS.md)
 
 ## Original notes
 
