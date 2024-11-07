@@ -9,15 +9,6 @@ See also AKS deployment of KAITO with GPU: [https://github.com/clarenceb/aks-sto
 ```sh
 az login
 
-# Linux/WSL2
-export KUBECONFIG=$HOME/.kube/config
-kubelogin convert-kubeconfig -l azurecli
-
-# Windows
-az aks get-credentials -n <cluster-name> -g <rg-name>
-set KUBECONFIG=%USERPROFILE%\.kubeconfig
-kubelogin convert-kubeconfig -l azurecli
-
 # Common steps
 azd env new
 
@@ -36,12 +27,22 @@ azd env set DEPLOY_AZURE_CONTAINER_REGISTRY false
 azd env set BUILD_CONTAINERS false
 azd env set AZURE_OPENAI_LOCATION swedencentral
 
+# `azd up` requires Docker to be installed and running
 azd up
+
+# Linux/WSL2
+export KUBECONFIG=$HOME/.kube/config
+kubelogin convert-kubeconfig -l azurecli
+
+# Windows
+az aks get-credentials -n <cluster-name> -g <rg-name>
+set KUBECONFIG=%USERPROFILE%\.kubeconfig
+kubelogin convert-kubeconfig -l azurecli
 
 kubectl get nodes
 kubectl get pods -n pets
 
-# (Re-)run just the deployment if you make app changes
+# If needed: (re-)run just the deployment if you make app changes
 azd deploy
 
 # If there are pod errors...

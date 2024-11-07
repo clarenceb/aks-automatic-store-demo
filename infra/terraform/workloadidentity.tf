@@ -11,7 +11,7 @@ resource "azurerm_federated_identity_credential" "example" {
   resource_group_name = azurerm_resource_group.example.name
   parent_id           = azurerm_user_assigned_identity.example[0].id
   audience            = ["api://AzureADTokenExchange"]
-  issuer              = jsondecode(azapi_resource.automatic.output).properties.oidcIssuerProfile.issuerURL
+  issuer              = azapi_resource.automatic.output.properties.oidcIssuerProfile.issuerURL
   subject             = "system:serviceaccount:${var.k8s_namespace}:${azurerm_user_assigned_identity.example[0].name}"
 }
 

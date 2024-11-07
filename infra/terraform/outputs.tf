@@ -19,11 +19,11 @@ output "AZURE_AKS_CLUSTER_ID" {
 }
 
 output "AZURE_AKS_CLUSTER_NODE_RESOURCEGROUP_NAME" {
-  value = jsondecode(azapi_resource.automatic.output).properties.nodeResourceGroup
+  value = azapi_resource.automatic.output.properties.nodeResourceGroup
 }
 
 output "AZURE_AKS_OIDC_ISSUER_URL" {
-  value = jsondecode(azapi_resource.automatic.output).properties.oidcIssuerProfile.issuerURL
+  value = azapi_resource.automatic.output.properties.oidcIssuerProfile.issuerURL
 }
 
 output "AZURE_OPENAI_MODEL_NAME" {

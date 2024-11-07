@@ -15,13 +15,13 @@ resource "azapi_resource" "automatic" {
     type = "SystemAssigned"
   }
 
-  body = jsonencode({
-    sku: {
-		name: "Automatic"
+  body = {
+    sku = {
+		  name: "Automatic"
   		tier: "Standard"
     }
-    properties: {
-      agentPoolProfiles: [
+    properties = {
+      agentPoolProfiles = [
         {
           name: "systempool"
           count: 3
@@ -31,7 +31,7 @@ resource "azapi_resource" "automatic" {
         }
       ]
     }
-  })
+  }
 
   response_export_values = [
     "name",
